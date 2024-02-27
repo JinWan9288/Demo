@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间：找到所在的mapper接口的位置-->
+<mapper namespace="com.springboot.mapper.UserMapper">
+    <!--动态sql语句代码-->
+    <!--可以在mapper写sql语句，也可以在xml里写sql语句，二者选一 -->
+    <!-- 方法名字与mapper层的要一一对应 mapper中 有 update-->
+    <update id="update">
+        update user
+        <set>    <!--若用户名 密码 年龄 性别 电话 地址 邮箱不为空，也就是数据库中本身存在数据，那么做更新修改操作-->
+        <if test="number != null">  number = #{number},</if>
+        <if test="username != null">  username = #{username},</if>
+        <if test="passwords != null"> passwords=#{passwords},</if>
+        <if test="age != null">age = #{age},</if>
+        <if test="sex != null">sex = #{sex},</if>
+        <if test="phone != null">phone = #{phone},</if>
+        <if test="address != null">adress = #{adress},</if>
+        <if test="email != null">email = #{email},</if>
+        </set>
+
+        <where> id = #{id} </where>
+    </update>
+
+    <!--     <insert id="insert">-->
+<!--         insert user-->
+
+<!--     </insert>-->
+
+</mapper>
